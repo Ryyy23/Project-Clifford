@@ -27,9 +27,5 @@ steps:
   inputs:
     targetPath: 'Project-Clifford/dist'
     artifact: 'Project-Clifford'
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: 'Project-Clifford/dist'
-    ArtifactName: 'Project-Clifford'
-    publishLocation: 'Container'
+
 
