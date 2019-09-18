@@ -17,6 +17,13 @@ steps:
   inputs:
     command: 'install'
     workingDir: 'Project-Clifford/'
+    
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'Project-Clifford'
+    customCommand: 'install @angular/cli -g'
+
 - task: Npm@1
   inputs:
     command: 'custom'
