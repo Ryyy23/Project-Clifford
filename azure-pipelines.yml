@@ -14,17 +14,20 @@ steps:
   inputs:
       checkLatest: true
 - task: Npm@1
+  displayName: 'Install NPM'
   inputs:
     command: 'install'
     workingDir: 'Project-Clifford/'
     
 - task: Npm@1
+  displayName: 'Install Angular CLI'
   inputs:
     command: 'custom'
     workingDir: 'Project-Clifford'
     customCommand: 'install @angular/cli -g'
 
 - task: Npm@1
+  displayName: 'Run prod-build-dev'
   inputs:
     command: 'custom'
     workingDir: 'Project-Clifford'
