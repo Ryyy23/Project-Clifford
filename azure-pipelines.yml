@@ -16,20 +16,20 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
-    workingDir: 'Project-Clifford'
+    workingDir: 'Project-Clifford/'
 - task: Npm@1
   inputs:
     command: 'custom'
     workingDir: 'Project-Clifford'
     customCommand: 'run prod-build-dev'
-- task: CopyFiles@2
-  inputs:
-    Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'Project-Clifford/dist'
+    artifact: 'Project-Clifford'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: 'Project-Clifford/dist'
     ArtifactName: 'Project-Clifford'
     publishLocation: 'Container'
 
