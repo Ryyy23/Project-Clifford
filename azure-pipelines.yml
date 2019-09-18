@@ -7,16 +7,24 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 steps:
-- task: NodeTool@0
+- task: UseNode@1
   inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+      checkLatest: true
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: 'Project-Clifford'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'Project-Clifford'
+    customCommand: 'run prod-build-dev'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'Project-Clifford'
+    publishLocation: 'Container'
 
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
