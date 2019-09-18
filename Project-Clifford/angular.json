@@ -6,7 +6,7 @@
     "Project-Clifford": {
       "projectType": "application",
       "schematics": {},
-      "root": "",
+      "root": "/Project-Clifford/Project-Clifford",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
