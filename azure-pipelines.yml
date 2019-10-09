@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: UseNode@1
@@ -17,25 +17,25 @@ steps:
   displayName: 'Install NPM'
   inputs:
     command: 'install'
-    workingDir: 'Project-Clifford/'
+    workingDir: 'Project_clifford'
     
 - task: Npm@1
   displayName: 'Install Angular CLI'
   inputs:
     command: 'custom'
-    workingDir: 'Project-Clifford'
+    workingDir: 'Project_clifford'
     customCommand: 'install @angular/cli -g'
 
 - task: Npm@1
   displayName: 'Run prod-build-dev'
   inputs:
     command: 'custom'
-    workingDir: 'Project-Clifford'
-    customCommand: 'run prod-build-dev'
+    workingDir: 'Project_clifford'
+    customCommand: 'ng build --prod'
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: 'Project-Clifford/dist'
-    artifact: 'Project-Clifford'
+    targetPath: 'Project_clifford/dist'
+    artifact: 'Project_clifford'
 
 
